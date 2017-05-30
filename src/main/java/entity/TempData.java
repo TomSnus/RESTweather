@@ -16,16 +16,36 @@ public class TempData {
     private double humidity;
     @XmlAttribute(name = "Unit")
     private String tempUnit;
+    private String lon;
+    private String lat;
+
 
     public TempData() {
     }
 
-    public TempData(double temperature, double humidity, String tempUnit) {
+    public TempData(double temperature, double humidity, String tempUnit, String lon, String lat) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.tempUnit = tempUnit;
+        this.lon = lon;
+        this.lat = lat;
     }
 
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
 
     public double getTemperature() {
         return temperature;
@@ -74,5 +94,10 @@ public class TempData {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (tempUnit != null ? tempUnit.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "new Report: " + lon + " " + lat;
     }
 }
